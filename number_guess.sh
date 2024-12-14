@@ -17,5 +17,10 @@ then
   echo "Welcome, $USERNAME! It looks like this is your first time here."
 else
   # query table
+  PLAYER=$($PSQL "SELECT username, games_played, best_game FROM player_stats WHERE player_id = $PLAYER_ID")
   # welcome player
+  echo "$PLAYER" | while read USER BAR GAMES_PLAYED BAR BEST_GAME
+  do
+    echo "Welcome back, $USER! You have played $GAMES_PLAYED games, and your best game took $BEST_GAME guesses."
+  done
 fi
