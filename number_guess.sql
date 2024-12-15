@@ -86,7 +86,8 @@ SET default_table_access_method = heap;
 --
 
 CREATE TABLE public.player_stats ( username character varying(22) NOT NULL,
-                                                                  player_id integer NOT NULL);
+                                                                  player_id integer NOT NULL,
+                                                                                    games_played integer, best_game integer);
 
 
 ALTER TABLE public.player_stats OWNER TO freecodecamp;
@@ -118,11 +119,18 @@ SET DEFAULT nextval('public.player_stats_player_id_seq'::regclass);
 --
 -- Data for Name: player_stats; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
- --
+
+INSERT INTO public.player_stats
+VALUES ('Fishy',
+        1,
+        1,
+        45);
+
+--
 -- Name: player_stats_player_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
 --
 
-SELECT pg_catalog.setval('public.player_stats_player_id_seq', 1, false);
+SELECT pg_catalog.setval('public.player_stats_player_id_seq', 1, true);
 
 --
 -- Name: player_stats player_stats_pkey; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
